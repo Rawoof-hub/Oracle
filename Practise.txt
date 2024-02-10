@@ -1,0 +1,1156 @@
+Syntax: alter user <user name> account unlock / lock;
+Types of SQL Languages:
+We have 5 sub-languages are there:
+
+1. Data Definition Language (DDL):
+Create
+Alter
+Rename
+Truncate
+Drop
+Latest Features in DDL:
+
+Recyclebin
+Flashback
+Purge
+2. Data Manipulation Language (DML):Insert
+Update
+Delete
+Latest Commands in DML:
+
+Insert all
+Merge
+3. Data Query / Retrieval Language (DQL / DRL):
+Select
+4. Transaction Control Language (TCL):
+Commit
+Rollback
+Savepoint
+5. Data Control Language (DCL):
+Grant
+Revoke
+
+Datatypes in Oracle Database with Examples
+Datatypes in Oracle
+Datatype is an attribute that specifies what type of data is stored in a column. Oracle supports the following data types.
+
+Numeric Datatypes
+Character Datatypes/ String Datatypes
+Long Datatype
+Date Datatypes
+Raw & Long Raw Datatypes
+Lob Datatypes (Large Objects Datatypes)
+https://dotnettutorials.net/lesson/datatypes-in-oracle/
+https://docs.oracle.com/cd/A97630_01/server.920/a96539/scripts.htm
+
+CREATE TABLE EmployeeUK
+(
+  EmployeeId INT,
+  FirstName VARCHAR(20),
+  LastName VARCHAR(20),
+  Gender VARCHAR(10),
+  Department VARCHAR(20)
+);
+INSERT INTO EmployeeUK VALUES(1, 'Pranaya', 'Rout', 'Male','IT');
+INSERT INTO EmployeeUK VALUES(2, 'Priyanka', 'Dewangan', 'Female','IT');
+INSERT INTO EmployeeUK VALUES(3, 'Preety', 'Tiwary', 'Female','HR');
+INSERT INTO EmployeeUK VALUES(4, 'Subrat', 'Sahoo', 'Male','HR');
+INSERT INTO EmployeeUK VALUES(5, 'Anurag', 'Mohanty', 'Male','IT');
+INSERT INTO EmployeeUK VALUES(6, 'Rajesh', 'Pradhan', 'Male','HR');
+INSERT INTO EmployeeUK VALUES(7, 'Hina', 'Sharma', 'Female','IT');
+CREATE TABLE EmployeeUSA
+(
+  EmployeeId INT,
+  FirstName VARCHAR(20),
+  LastName VARCHAR(20),
+  Gender VARCHAR(10),
+  Department VARCHAR(20)
+);
+INSERT INTO EmployeeUSA VALUES(1, 'James', 'Pattrick', 'Male','IT');
+INSERT INTO EmployeeUSA VALUES(2, 'Priyanka', 'Dewangan', 'Female','IT');
+INSERT INTO EmployeeUSA VALUES(3, 'Sara', 'Taylor', 'Female','HR');
+INSERT INTO EmployeeUSA VALUES(4, 'Subrat', 'Sahoo', 'Male','HR');
+INSERT INTO EmployeeUSA VALUES(5, 'Sushanta', 'Jena', 'Male','HR');
+INSERT INTO EmployeeUSA VALUES(6, 'Mahesh', 'Sindhey', 'Female','HR');
+INSERT INTO EmployeeUSA VALUES(7, 'Hina', 'Sharma', 'Female','IT');
+
+select * from employeeUK;
+select employeeid,firstname,gender, department from employeeUK 
+Union 
+select employeeid,firstname,gender, department from employeeUK order by firstname;
+
+
+select employeeid,firstname,gender, department from employeeUK 
+Union All
+select employeeid,firstname,gender, department from employeeUK order by firstname;
+
+SELECT FirstName, LastName, Gender, Department FROM EmployeeUK
+INTERSECT
+SELECT FirstName, LastName, Gender, Department FROM EmployeeUSA;
+
+CREATE TABLE Employees1
+(
+    Id int,
+    Name VARCHAR(20),
+    Gender VARCHAR(10),
+    Salary int
+);
+
+Insert into Employees1 values (1, 'Mark', 'Male', 52000);
+Insert into Employees1 values (2, 'Mary', 'Female', 55000);
+Insert into Employees1 values (3, 'Steve', 'Male', 45000);
+Insert into Employees1 values (4, 'John', 'Male', 40000);
+Insert into Employees1 values (5, 'Sara', 'Female', 48000);
+Insert into Employees1 values (6, 'Pam', 'Female', 60000);
+Insert into Employees1 values (7, 'Tom', 'Male', 58000);
+Insert into Employees1 values (8, 'George', 'Male', 65000);
+Insert into Employees1 values (9, 'Tina', 'Female', 67000);
+Insert into Employees1 values (10, 'Ben', 'Male', 80000);
+
+                    Joins
+                    *****
+                    https://docs.oracle.com/cd/E15523_01/bi.1111/b32519/joins.htm#BIDAG444
+
+CREATE TABLE VIDEO_PRODUCTS(PRODUCT_CODE NUMBER(4,0) NOT NULL,PRODUCT_DESCRIPTION VARCHAR2(20),COUNTRY_CODE NUMBER(2,0) NOT NULL);
+drop table VIDEO_PRODUCTS;
+
+insert all into video_products (PRODUCT_CODE,PRODUCT_DESCRIPTION,COUNTRY_CODE) values (1000,'FR Game Rental',10)
+into video_products (PRODUCT_CODE,PRODUCT_DESCRIPTION,COUNTRY_CODE) values (2000,'FR Video Rental',10)
+into video_products (PRODUCT_CODE,PRODUCT_DESCRIPTION,COUNTRY_CODE) values (3000,'FR Video Sales',10)
+into video_products (PRODUCT_CODE,PRODUCT_DESCRIPTION,COUNTRY_CODE) values (1000,'US Game Rental',20)
+into video_products (PRODUCT_CODE,PRODUCT_DESCRIPTION,COUNTRY_CODE) values (2000,'US Video Rental',20)
+into video_products (PRODUCT_CODE,PRODUCT_DESCRIPTION,COUNTRY_CODE) values (1000,'UK Game Rental',30)
+into video_products (PRODUCT_CODE,PRODUCT_DESCRIPTION,COUNTRY_CODE) values (2000,'UK Video Rental',30)
+Select * from dual;
+select * from VIDEO_PRODUCTS;
+
+CREATE TABLE VIDEO_SALES(SALES_ORDER_ID NUMBER(1,0) NOT NULL,COUNTRY_CODE NUMBER(2,0) NOT NULL,PRODUCT_CODE NUMBER(4,0) NOT NULL, VALUE NUMBER(2,0));
+SELECT * FROM VIDEO_SALES;
+insert all into video_sales (SALES_ORDER_ID,COUNTRY_CODE,PRODUCT_CODE,VALUE) values (1,30,1000,10)
+into video_sales (SALES_ORDER_ID,COUNTRY_CODE,PRODUCT_CODE,VALUE) values (2,10,2000,19)
+into video_sales (SALES_ORDER_ID,COUNTRY_CODE,PRODUCT_CODE,VALUE) values (3,10,3000,25)
+into video_sales (SALES_ORDER_ID,COUNTRY_CODE,PRODUCT_CODE,VALUE) values (4,10,1000,8)
+Select * from dual;
+
+select * from VIDEO_PRODUCTS;
+select PRODUCT_DESCRIPTION,value from video_products p,video_sales s where p.country_code=s.country_code and p.product_code=s.product_code;
+
+CREATE TABLE VIDEO_SALES_ORDERS(SALES_ID NUMBER(2,0) NOT NULL,CUST_NAME VARCHAR2(10) NOT NULL);
+
+
+insert all into VIDEO_SALES_ORDERS (SALES_ID,CUST_NAME)VALUES (10,'SMITH')
+into VIDEO_SALES_ORDERS (SALES_ID,CUST_NAME)VALUES (20,'JONES')
+into VIDEO_SALES_ORDERS (SALES_ID,CUST_NAME)VALUES (30,'TURNER')
+into VIDEO_SALES_ORDERS (SALES_ID,CUST_NAME)VALUES (40,'ADAMS')
+Select * from dual;
+
+SELECT * FROM VIDEO_SALES_ORDERS;
+
+CREATE TABLE SALES_ORDER_LINE_ITEMS(SALES_ID NUMBER(2,0) NOT NULL,LINE_ID NUMBER(1,0) NOT NULL,PROD_ID NUMBER(4,0)NOT NULL);
+insert all into SALES_ORDER_LINE_ITEMS (SALES_ID,LINE_ID,PROD_ID)VALUES (10,1,1000)
+into SALES_ORDER_LINE_ITEMS (SALES_ID,LINE_ID,PROD_ID)VALUES (10,2,3000)
+into SALES_ORDER_LINE_ITEMS (SALES_ID,LINE_ID,PROD_ID)VALUES (20,1,4000)
+into SALES_ORDER_LINE_ITEMS (SALES_ID,LINE_ID,PROD_ID)VALUES (20,2,3000)
+into SALES_ORDER_LINE_ITEMS (SALES_ID,LINE_ID,PROD_ID)VALUES (20,3,2000)
+into SALES_ORDER_LINE_ITEMS (SALES_ID,LINE_ID,PROD_ID)VALUES (30,1,1000)
+into SALES_ORDER_LINE_ITEMS (SALES_ID,LINE_ID,PROD_ID)VALUES (30,2,1000)
+into SALES_ORDER_LINE_ITEMS (SALES_ID,LINE_ID,PROD_ID)VALUES (40,1,4000)
+Select * from dual;
+
+SELECT * FROM SALES_ORDER_LINE_ITEMS;
+
+CREATE TABLE VIDEO_PRODUCTS(PRODUCT_ID NUMBER(4,0) NOT NULL,PROD_DESC VARCHAR2(15) NOT NULL);
+
+insert all into VIDEO_PRODUCTS (PRODUCT_ID,PROD_DESC)VALUES (1000,'TOY STORY')
+into VIDEO_PRODUCTS (PRODUCT_ID,PROD_DESC)VALUES (2000,'TRUE LIES')
+into VIDEO_PRODUCTS (PRODUCT_ID,PROD_DESC)VALUES (3000,'POPCORN')
+into VIDEO_PRODUCTS (PRODUCT_ID,PROD_DESC)VALUES (4000,'STARGATE')
+Select * from dual;
+
+
+
+A join is a query that combines rows from two or more tables, views, or materialized views.
+If any two of these tables have a column name in common, then you must qualify all references to these columns throughout the query with table names to avoid ambiguity.
+There are 4 different types of Oracle joins:
+
+Oracle INNER JOIN (or sometimes called simple join)
+Oracle LEFT OUTER JOIN (or sometimes called LEFT JOIN)
+Oracle RIGHT OUTER JOIN (or sometimes called RIGHT JOIN)
+Oracle FULL OUTER JOIN (or sometimes called FULL JOIN)
+Types of Joins:
+***************
+Inner Joins (Simple Join)
+Outer Joins
+Left Outer Join (Left Join)
+Right Outer Join (Right Join)
+Full Outer Join (Full Join)
+Equijoins
+Self Joins
+Cross Joins (Cartesian Products)
+Antijoins
+Semijoins
+Inner Join:The simplest join requires two tables that share key which are tested for equality.
+        *Primary Key in oone table
+        *Foreign Key in another table
+This is called an equi join or and Inner Join
+
+A WHERE clause that contains a join condition can also contain other conditions that refer to columns of only one table. These conditions can further restrict the rows returned by the join query.
+Equijoins
+An equijoin is a join with a join condition containing an equality operator. An equijoin combines rows that have equivalent values for the specified columns. 
+Band Joins
+A band join is a special type of nonequijoin in which key values in one data set must fall within the specified range (“band”) of the second data set. The same table can serve as both the first and second data sets.
+Self Joins
+A self join is a join of a table to itself. This table appears twice in the FROM clause and is followed by table aliases that qualify column names in the join condition. 
+NATURAL
+
+The NATURAL keyword indicates that a natural join is being performed. A natural join is based on all columns in the two tables that have the same name. It selects rows from the two tables that have equal values in the relevant columns. If two columns with the same name do not have compatible data types, then an error is raised. When specifying columns that are involved in the natural join, do not qualify the column name with a table name or table alias.
+Restriction on the ON condition Clause
+
+You cannot specify this clause with a NATURAL outer join.
+Restriction on the USING column Clause
+
+The USING column clause is subject to the following restrictions:
+
+Within this clause, do not qualify the column name with a table name or table alias.
+
+You cannot specify a LOB column or a collection column in the USING column clause.
+
+You cannot specify this clause with a NATURAL outer join.
+CREATE TABLE Course_Joins (
+  CourseId INT PRIMARY KEY,
+  CourseName VARCHAR(15),
+  CourseFee INT
+);
+select * from video_products;
+INSERT INTO Course_Joins (CourseId, CourseName, CourseFee) VALUES (10, 'Oracle', 3500);
+INSERT INTO Course_Joins (CourseId, CourseName, CourseFee) VALUES (20, 'MySQL', 3000);
+INSERT INTO Course_Joins (CourseId, CourseName, CourseFee) VALUES (30, 'SQL Server', 4500);
+select * from course;
+drop table course;
+CREATE TABLE Student_Joins (
+  StudentId INT PRIMARY KEY,
+  StudentName VARCHAR(15),
+  CourseId INT
+);
+
+INSERT INTO Student_Joins (StudentId, StudentName, CourseId) VALUES (1001, 'James', 10);
+INSERT INTO Student_Joins (StudentId, StudentName, CourseId) VALUES (1002, 'Smith', 20);
+INSERT INTO Student_Joins (StudentId, StudentName, CourseId) VALUES (1003, 'Warner', 30);
+INSERT INTO Student_Joins (StudentId, StudentName, CourseId) VALUES (1004, 'Sara', 10);
+INSERT INTO Student_Joins (StudentId, StudentName, CourseId) VALUES (1005, 'Pam', 20);
+
+SELECT * FROM Student_Joins, Course_Joins WHERE CourseId = CourseId;
+/*ORA-00918: column ambiguously defined
+00918. 00000 -  "column ambiguously defined"*/
+Rule of Joining Tables in Oracle:
+A row in the first table is compared with all rows of the second table.
+select * from student_joins s,course_joins c where c.courseid  = s.courseid;
+select * from student_joins s,course_joins c where c.courseid  = s.courseid AND c.courseid=20;
+CROSS JOIN Syntax: select * from table1,table2;
+No.of rows in first table*No.of rows in second table= Total no. of rows of cross join
+select * from employees e, departments d order by e.employee_id,d.department_id;
+
+Assignment for Cross Join 
+1) Give the Cartesian product of employee and department table 
+2) Display the department id from employee and department table separate separate
+Ans: select department_d e.department_id,department_id d.department_id from employees e,deparments d where e.department_id=d.department_id;
+3) Give the Cartesian product of any three table
+4) first table have 3 and second table has 5 rows and if we apply Cartesian product then how many rows will be in output table
+3)Ans: select * from employees,departments,locations;
+          INNER JOIN
+          **********
+select column_name from table1 inner join table2 on table1.column_name=table2.column_name;
+select employee_id,d.department_id, d.department_name from employees e inner join departments d on e.department_id=d.department_id;
+Assignment for Inner Join 
+1) Display the department numbers from department table which are not present in employee table
+2) Select Department number and department name in which at least 3 member working
+3) Select Department number and department name in which at least 3 member working and salary is in 3 digit
+4) Select Department number and department name in which maximum salary greater then 3000
+5) Select the Department number , department name and average of each department
+6) Select the department name and department location  of employee 100 , 101 , 102
+Ans: 1. select employee_id,d.department_id, d.department_name from employees e inner join departments d on e.department_id=d.department_id;
+        LEFT OUTER JOIN
+        ***************
+select column_name from table1 LEFT OUTER JOIN table2 on table1.column_name=table2.column_name;
+select employee_id,first_name, e.department_id, d.department_name,d.department_id,d.manager_id from employees e LEFT OUTER JOIN departments d 
+on e.department_id=d.department_id;
+https://youtu.be/uQNQPYkteWE?list=PLiLpmqwkwkCt0QeXD8j7BwIoOaBGBRrZC
+                Right Outer Join
+                ****************
+select employee_id,first_name,e.department_id, d.department_id,d.department_name,d.manager_id from employees e Left Outer Join departments d on e.department_id=d.department_id;
+
+Assignment for Right Outer Join											
+1) Display Emp id , department id  , department name , also preserve all the rows from right side of table
+2) Display Emp id , department id  , department name for employee 100,200,300 and preserve all the rows from right side of table
+3) Display Emp id , department id  , department name whose name start with 'R' and end with 'S' and preserve all the rows from right side of table
+4) Display Emp id , department id  , department name whose salary in 3 digit and preserve all the rows from right side of table
+5) Display Emp id , department id  , department name whose hired between 2003 and 2004 and preserve all the rows from right side of table
+6) Display Emp name (firt 4 letter) , department id  , department name whose name contain 'E' and preserve all the rows from right side of table
+                    Full Outer Join
+                    ***************
+select e.employee_id,d.department_id,d.department_name from employees e Full Outer Join departments d on e.department_id=d.department_id;
+
+INSERT INTO EmployeeUK VALUES(2, ‘Priyanka’, ‘Dewangan’, ‘Female’,’IT’);
+SELECT USA.FirstName, USA.LastName, USA.Gender, USA.Department
+FROM EmployeeUK UK INNER JOIN EmployeeUSA USA
+ON UK.EmployeeID = USA.EmployeeID;
+
+SELECT Id, Name, Gender, Salary
+FROM Employees1
+WHERE Salary >= 50000
+MINUS
+SELECT Id, Name, Gender, Salary
+FROM Employees1
+WHERE Salary >= 60000
+ORDER BY Name;
+
+CREATE TABLE TableA
+(
+  ID INT,
+  Name VARCHAR(20),
+  Gender VARCHAR(10),
+  Department VARCHAR(10)
+);
+
+INSERT INTO TableA VALUES(1, 'Pranaya', 'Male','IT');
+INSERT INTO TableA VALUES(2, 'Priyanka', 'Female','IT');
+INSERT INTO TableA VALUES(3, 'Preety', 'Female','HR');
+
+CREATE TABLE TableB
+(
+  ID INT,
+  Name VARCHAR(20),
+  Gender VARCHAR(10),
+  Department VARCHAR(10)
+);
+
+INSERT INTO TableB VALUES(2, 'Priyanka', 'Female','IT');
+INSERT INTO TableB VALUES(3, 'Preety', 'Female','HR');
+
+SELECT ID, Name, Gender, Department FROM TableA
+MINUS
+SELECT ID, Name, Gender, Department FROM TableB;
+
+INSERT INTO TableA VALUES(1, ‘Pranaya’, ‘Male’, ‘IT’);
+
+SELECT ID, Name, Gender, Department FROM TableA
+MINUS
+SELECT ID, Name, Gender, Department FROM TableB;
+
+SELECT ID, Name, Gender, Department FROM TableA
+MINUS
+SELECT ID, Name, Gender FROM TableB;
+
+CREATE TABLE CUSTOMER_KNOWN_GOOD
+(
+   CUST_NBR INT,
+   NAME     VARCHAR(20)
+);
+
+INSERT INTO CUSTOMER_KNOWN_GOOD VALUES (1, 'Sony');
+INSERT INTO CUSTOMER_KNOWN_GOOD VALUES (1, 'Sony');
+INSERT INTO CUSTOMER_KNOWN_GOOD VALUES (2, 'Samsung');
+INSERT INTO CUSTOMER_KNOWN_GOOD VALUES (3, 'Panasonic');
+INSERT INTO CUSTOMER_KNOWN_GOOD VALUES (3, 'Panasonic');
+INSERT INTO CUSTOMER_KNOWN_GOOD VALUES (3, 'Panasonic');
+
+CREATE TABLE CUSTOMER_TEST
+(
+   CUST_NBR INT,
+   NAME     VARCHAR(20)
+);
+
+INSERT INTO CUSTOMER_TEST VALUES (1, 'Sony');
+INSERT INTO CUSTOMER_TEST VALUES (1, 'Sony');
+INSERT INTO CUSTOMER_TEST VALUES (2, 'Samsung');
+INSERT INTO CUSTOMER_TEST VALUES (2, 'Samsung');
+INSERT INTO CUSTOMER_TEST VALUES (3, 'Panasonic');
+
+(SELECT * FROM CUSTOMER_KNOWN_GOOD
+MINUS
+SELECT * FROM CUSTOMER_TEST)
+UNION ALL
+(SELECT * FROM CUSTOMER_TEST
+MINUS
+SELECT * FROM CUSTOMER_KNOWN_GOOD);
+
+(SELECT C1.*, COUNT(*) FROM CUSTOMER_KNOWN_GOOD C1
+GROUP BY C1.CUST_NBR, C1.NAME
+MINUS
+SELECT C2.*, COUNT(*) FROM CUSTOMER_TEST C2
+GROUP BY C2.CUST_NBR, C2.NAME)
+UNION ALL
+(SELECT C3.*, COUNT(*) FROM CUSTOMER_TEST C3
+GROUP BY C3.CUST_NBR, C3.NAME
+MINUS
+SELECT C4.*, COUNT(*) FROM CUSTOMER_KNOWN_GOOD C4
+GROUP BY C4.CUST_NBR, C4.NAME);
+
+SELECT 1 NUM, 'DEFINITE' STRING FROM DUAL
+UNION
+SELECT 2 NUM, NULL STRING FROM DUAL;
+
+SELECT NVL(NULL,100) FROM DUAL;
+SELECT
+NVL2(NULL, 10, 98) as New_value
+FROM
+dual;
+SELECT
+NVL2('hello', 10, 98) as New_value
+FROM
+dual;
+
+SELECT
+NVL2(100, 'hello', 'hi') as string_value
+FROM
+dual;
+
+SELECT
+NVL2('', 'this is not null value', 'this is a null value') as string_value
+FROM
+dual;
+select * from book;
+select * from book where type='computer';
+select * from book where type='cooking' and price>22;
+select * from book where type='cooking' or pub_id=3;
+select * from employee;
+select * from employee where (dept_id=20 or dept_id=30) and salary>1600;
+SELECT COUNT(*) AS TotalEmployee FROM Employee;
+SELECT Dept_id, COUNT(*) AS TotalEmployee FROM Employee GROUP BY Dept_id;
+SELECT SUM(Salary) as TotalSalary FROM Employee;
+select dept_id,sum(salary)TotalSalary from employee group by dept_id;
+select * from employee;
+select dept_id,max(salary),min(salary) from employee group by dept_id;
+select dept_id,sum(salary) from employee where dept_id=30 group by dept_id;
+select dept_id,sum(salary) from employee having dept_id=30 group by dept_id;
+/*Note: From the performance point of view, the HAVING Clause is slower than the WHERE clause, and having clause should be avoided if possible. The point that we should consider is, try to eliminate the records as soon as possible which you don’t want in your result set.*/
+select dept_id,sum(salary) from employee having sum(salary)> 8750 group by dept_id;
+Our requirement is the find all the departments whose total number of 
+employees working in that department is greater than 3.
+select dept_id,count(*) AS "Number of Employees" from employee group by dept_id having count(dept_id)>3;
+select dept_id,count(emp_id) from employee group by dept_id having count(dept_id)>3;
+select * from employee;
+Our requirement is to find all the departments where the average salary is more than 49000.
+select dept_id, avg(salary) from employee group by dept_id having avg(salary)>1567;
+Our requirement is to find all the departments where the minimum salary is greater than 800.
+select dept_id, min(salary) from employee group by dept_id;
+select dept_id, min(salary) from employee group by dept_id having min(salary)>800;
+Our requirement is to find all the departments where the maximum salary is greater than 2850.
+select dept_id, max(salary) from employee group by dept_id having max(salary)>2850;
+DROP Table Employee;
+
+
+DROP Table Employee2;
+
+CREATE TABLE Employee2 (
+  Id INT PRIMARY KEY,
+  Name VARCHAR(15),
+  Department VARCHAR(10),
+  Salary NUMBER(8, 2),
+  Gender VARCHAR(10),
+  Comm INT,
+  City VARCHAR(10)
+);
+
+INSERT INTO Employee2 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1001, 'John', 'IT', 35000, 'Male', 3500, 'London');
+INSERT INTO Employee2 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1002, 'Smith', 'HR', 45000, 'Male', 4500, 'Mumbai');
+INSERT INTO Employee2 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1003, 'James', 'Finance', 50000, 'Male', 5000, 'Delhi');
+INSERT INTO Employee2 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1004, 'Mike', 'Finance', 50000, 'Male', NULL, 'London');
+INSERT INTO Employee2 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1005, 'Linda', 'HR', 75000, 'Female', NULL, 'Mumbai');
+INSERT INTO Employee2 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1006, 'Anurag', 'IT', 35000, 'Male', NULL, 'London');
+INSERT INTO Employee2 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1007, 'Priyanla', 'HR', 45000, 'Female', NULL, 'Mumbai');
+INSERT INTO Employee2 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1008, 'Sambit', 'IT', 55000, 'Female', 5500, 'London');
+INSERT INTO Employee2 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1009, 'Pranaya', 'IT', 57000, 'Female', 5700, 'London');
+INSERT INTO Employee2 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1010, 'Hina', 'HR', 75000, 'Male', 7500, 'Mumbai');
+INSERT INTO Employee2 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1011, 'Warner', 'Finance', 55000, 'Female', NULL, 'London');
+
+SELECT Department, COUNT(*) FROM Employee2 GROUP BY ROLLUP(Department);
+
+When you execute the above query, you will get the following output. As you can see, it is grouping the records based on the Department column and showing the department name and the number of employees belongs to that department. Apart from that, it is also showing the grand total i.e. total number of employees (adding the total number of employees in each department).
+select department,gender,count(*) from employee2 group by rollup(department,gender);
+Note: In the above example ROLLUP is finding sub and grand total based on a single column (Department). If we want to find sub and grand total then use the “CUBE” clause.
+select department,count(*) from employee2 group by cube(department) order by department;
+select department,gender,count(*) from employee2 group by cube(department,gender) order by department;
+SELECT Department, Gender, COUNT(*), GROUPING_ID(Department, Gender)
+FROM Employee2
+GROUP BY CUBE(Department, Gender)
+ORDER BY Department;
+
+DROP Table Employee3;
+
+CREATE TABLE Employee3 (
+  Id INT PRIMARY KEY,
+  Name VARCHAR(15),
+  Department VARCHAR(10),
+  Salary NUMBER(8, 2),
+  Gender VARCHAR(10),
+  Comm INT,
+  City VARCHAR(10)
+);
+
+INSERT INTO Employee3 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1001, 'John', 'IT', 35000, 'Male', 3500, 'London');
+INSERT INTO Employee3 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1002, 'Smith', 'HR', 45000, 'Male', 4500, 'Mumbai');
+INSERT INTO Employee3 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1003, 'James', 'Finance', 50000, 'Male', 5000, 'Delhi');
+INSERT INTO Employee3 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1004, 'Mike', 'Finance', 50000, 'Male', NULL, 'London');
+INSERT INTO Employee3 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1005, 'Linda', 'HR', 75000, 'Female', NULL, 'Mumbai');
+INSERT INTO Employee3 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1006, 'Anurag', 'IT', 35000, 'Male', NULL, 'London');
+INSERT INTO Employee3 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1007, 'Priyanla', 'HR', 45000, 'Female', NULL, 'Mumbai');
+INSERT INTO Employee3 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1008, 'Sambit', 'IT', 55000, 'Female', 5500, 'London');
+INSERT INTO Employee3 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1009, 'Pranaya', 'IT', 57000, 'Female', 5700, 'London');
+INSERT INTO Employee3 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1010, 'Hina', 'HR', 75000, 'Male', 7500, 'Mumbai');
+INSERT INTO Employee3 (Id, Name, Department, Salary, Gender, Comm, City) VALUES (1011, 'Warner', 'Finance', 55000, 'Female', NULL, 'London');
+
+SELECT * FROM Employee3 FETCH FIRST 3 ROWS ONLY;
+
+select * from
+( select   *
+  from     Employee3
+  order by 1 )
+where rownum <= 10;
+
+select   *
+from     Employee3
+order by 1
+fetch first 10 rows only;
+--Fetch first not works with 11g
+
+SELECT LENGTH('GOOD MORNING') FROM DUAL;
+SELECT LENGTHB('HELLO') FROM DUAL;
+SELECT LENGTHB('GOOD MORNING') FROM DUAL;
+select* from employees;
+--https://www.youtube.com/watch?v=X7tVSK1_k2w
+select employee_id,first_name,department_id from employees where employee_id in(100,101,102);
+select length(employee_id),employee_id,length(first_name),first_name,length(department_id),department_id from employees where employee_id in(100,101,102);
+--https://www.youtube.com/playlist?list=PLJivLVlqh_a6_pZhSkJGMxsenNAHO0mcz
+
+
+SELECT LTRIM(' ANURAG') TRIML FROM DUAL;
+SELECT LTRIM('XXXXXXANURAG','X') TRIML FROM DUAL;
+SELECT LTRIM('123ANURAG','123') TRIML FROM DUAL;
+SELECT LTRIM('123ANURAG',' ANURAG') TRIML FROM DUAL;
+SELECT LTRIM(name, ‘”‘) FROM students;
+
+SELECT RTRIM(name, ‘.”‘) FROM students;
+
+SELECT LTRIM(RTRIM(name, ‘.”‘), ‘”‘) FROM students;
+
+SELECT RTRIM(' ANURAG ') TRIMR FROM DUAL;
+SELECT RTRIM('ANURAG ') TRIMR FROM DUAL;
+SELECT RTRIM('ANURAGXXXXXX','X') TRIMR FROM DUAL;
+SELECT RTRIM('ANURAG123','123') TRIMR FROM DUAL;
+SELECT RTRIM('ANURAG123',' ANURAG') TRIMR FROM DUAL;
+SELECT TRIM(' Removing Leading and Trailing White Spaces ') LRTRIM FROM DUAL;
+SELECT TRIM(' Removing Leading White Spaces') LRTRIM FROM DUAL;
+SELECT TRIM('Removing Trailing White Spaces ') LRTRIM FROM DUAL;
+SELECT TRIM(LEADING '6' FROM '660123') LRTRIM FROM DUAL;
+SELECT TRIM(TRAILING '5' FROM '123455') LRTRIM FROM DUAL;
+--@@sTEVEN@@@@
+select first_name,TRIM(BOTH '@' FROM FIRST_NAME) FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=100
+select first_name,TRIM(LEADING '@' FROM FIRST_NAME) FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=100
+select first_name,TRIM(TRAILING '@' FROM FIRST_NAME) FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=100
+select first_name,TRIM(FIRST_NAME) FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=100
+-- The above query will remove both side spaces
+select TRIM( BOTH '0' FROM '000123000'),
+       TRIM( LEADING '0' FROM '000123'),
+       TRIM( TRAINLING '0' FROM '123000'),
+       TRIM( ' ' FROM ' 000123'),
+       TRIM( ' 000123000 ')
+       FROM DUAL;
+ Assignment for Trim function  
+Instruction before using LTrim function: Add the $$ at Leading and trailing side of the employees name in employees table 
+1. Trim the $ from the first_name from the employees table
+2. Trim the $ from the first_name from the employee table where employee_id is 100
+Points to Note:
+If you specify LEADING, then Oracle Database removes any leading characters equal to trim_character.
+If you specify TRAILING, then Oracle removes any trailing characters equal to trim_character.
+If you specify BOTH or none of the three, then Oracle removes leading and trailing characters equal to trim_character.
+If you do not specify trim_character, then the default value is a blank space.
+If you specify only trim_source, then Oracle removes leading and trailing blank spaces.
+The function returns a value with datatype VARCHAR2. The maximum length of the value is the length of trim_source.
+If either trim_source or trim_character is null, then the TRIM function returns null.
+Both trim_character and trim_source can be any of the datatypes CHAR, VARCHAR2, NCHAR, NVARCHAR2, CLOB, or NCLOB. The string returned is of VARCHAR2 datatype if trim_source is a character datatype and a LOB if trim_source is a LOB datatype. The return string is in the same character set as trim_source.
+https://www.youtube.com/watch?v=b25gQ8MYmlU&list=PLiLpmqwkwkCt0QeXD8j7BwIoOaBGBRrZC&index=39
+LPAD Syntax: LPAD(Column/expression, padded-length, [Pad_string]);
+SELECT LPAD('Hello',10,'+') PADL FROM DUAL;
+SELECT LPAD('Hello',4,'@') PADL FROM DUAL;
+select first_name,LENGTH(first_name),LPAD(FIRST_NAME,9,'*') FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=100
+select 'page',LENGTH('page'),LPAD('page',9,'*') FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=100
+select 'page',LENGTH('page'),LPAD('page',9,'*+&') FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=100
+select first_name,LENGTH(first_name),LPAD(FIRST_NAME,9,'*+&=') FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=100
+-- = will be truncated as it doesn't have place to accomadate
+9-6=3
+TotalLengthOfNewColumn-LengthOfColumn/String=NumberOfPlacement
+Assignment for LPAD Function
+1. Use the LPAD function and add the five *  at the Left hand side of first_name  of each employee 
+   from employees table  
+2. Use the LPAD function and add the five $  at the Left hand side of Last_name  of each employee 
+   from employees table
+3. Use the LPAD function and add the five *  at the Left hand side of first_name  of each employee 
+   from employees table where salary is greater than 9000
+
+https://youtu.be/GUKIKddjK6Q?list=PLiLpmqwkwkCt0QeXD8j7BwIoOaBGBRrZC
+SELECT RPAD('Hello',10,'@') PADR FROM DUAL;
+SELECT RPAD('Hello',4,'@') PADR FROM DUAL;
+select first_name from employees where employee_id=100;
+select length(first_name) from employees where employee_id=100;
+https://www.youtube.com/watch?v=GUKIKddjK6Q
+Formula: TotalLengthOfNewColumn-LengthOfColumn/String=NumberOfPlacement
+select first_name, length(first_name), LPAD(first_name,9,'*') from employees where employee_id=100;
+select 'page', length('page'), LPAD('page',9,'*+$') from employees where employee_id=100;
+https://www.youtube.com/watch?v=sbdgtEdDNmg
+select first_name,last_name from employees where employee_id in (100,101,102);
+select concat(first_name,last_name), first_name,last_name from employees where employee_id in (100,101,102);
+select concat (first_name,salary*10),first_name,salary from employees where employee_id in (100,101,102);
+Note: In concat function we can use only two parameters but in concat operator we can use n number of parameters
+
+select first_name||' '|| salary*10 ||' '|| first_name ||' '|| salary 
+from employees where employee_id in (100,101,102);
+
+                     Assignment  for Concatenation function
+1.Display the First_name and Last_name in single column using concatenation function from 
+  employees table
+2.Display the First_name and salary in single column from employees table where employee_id
+  is less than 105
+3.Display the employee_id and hire_date of each employee in single column from employees table
+  who hired in between 2003 and 2004
+
+SELECT CONCAT('Good', 'Morning') ConcatString FROM DUAL;
+https://www.youtube.com/watch?v=f50V1hmeMto
+
+SELECT REPLACE('JACK and JUE','J','BL') "New String" FROM DUAL;
+SELECT REPLACE('MAN and MAT','M','F') "New String" FROM DUAL;
+select replace(first_name,'S','XYZ'),first_name from employees;
+select replace('Welecom to Oracle class','Oracle','Java') from dual;
+select replace('Welecom to Oracle class','Oracle','E') from dual;
+select replace('Welecom to Oracle class','Oracle',' ') from dual;
+select translate('Welecom to Oracle class','abcde','12345 ') from dual;
+select translate('Welecom to Oracle class','Oracle','1234') from dual;
+SELECT TRANSLATE('comma|delimited|text', '|', ',') AS "New String" FROM DUAL;
+SELECT TRANSLATE('MAP-SSS-PAM-MAN-NUT-TUB', 'AMST', 'BDFL') AS "New String" FROM DUAL;
+SELECT TRANSLATE('So What', 'ah', 'e') AS "New String" FROM DUAL;
+SELECT TRANSLATE('"Replace Double Quotes "', 'A"', 'A') AS "New String" FROM DUAL;
+SELECT TRANSLATE('ABC DEF GHI JKL', 'ABCD', ' ') AS "New String" FROM DUAL;
+https://www.youtube.com/watch?v=lZR-JwiGIZY
+
+
+SELECT SUBSTR('HELLO',2,3) "New String" FROM DUAL;
+SELECT SUBSTR('WELCOME',4,2) "New String" FROM DUAL;
+SELECT SUBSTR('WELCOME',-6,3) "New String" FROM DUAL;
+SELECT SUBSTRB('ABCDEFG',5,4.2) "New String" FROM DUAL;
+SELECT INSTR('HELLO WELCOME','O') "New String" FROM DUAL;
+SELECT INSTR('HELLO WELCOME','Z') "New String" FROM DUAL;
+SELECT INSTR('HELLO WELCOME','O',1,2) "New String" FROM DUAL;
+SELECT INSTR('HELLO WELCOME','E',5,2) "New String" FROM DUAL;
+SELECT INSTR('HELLO WELCOME','E',1,4) "New String" FROM DUAL;
+SELECT INSTR('HELLO WELCOME','E',-1,3) "New String" FROM DUAL;
+SELECT INSTR('HELLO WELCOME','L',-4,3) "New String" FROM DUAL;
+SELECT INSTR('HELLO WELCOME','L',-6,3) "New String" FROM DUAL;
+https://www.youtube.com/watch?v=4XcKHaCi9jc&list=PLiLpmqwkwkCt0QeXD8j7BwIoOaBGBRrZC&index=30
+SELECT LOWER('HELLO') FROM DUAL;
+SELECT FIRST_NAME,LOWER(FIRST_NAME),HIRE_DATE, LOWER(HIRE_DATE) FROM HR.EMPLOYEES;
+ Assignment for LowerCase Function
+1. Display First_name in Lower case from employees table where employee_id are greater than 101.
+2. Display Hire_date in Lower case from employees table where employee_id is 111.
+3. Display First_name ,Last_name  in Lower Case from employees table where Department_id equal to 20.
+4. Display  Employee_id,First_name,Last_name in Lower_case from employees table where the first_name is Sarah
+SELECT LOWER(FIRST_NAME),EMPLOYEE_ID FROM HR.EMPLOYEES WHERE EMPLOYEE_ID>101;
+SELECT LOWER(HIRE_DATE) FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=111;
+SELECT LOWER(FIRST_NAME),LOWER(LAST_NAME),DEPARTMENT_ID FROM HR.EMPLOYEES WHERE DEPARTMENT_ID=20;
+SELECT EMPLOYEE_ID,LOWER(FIRST_NAME),LOWER(LAST_NAME),DEPARTMENT_ID FROM HR.EMPLOYEES WHERE FIRST_NAME='Sarah';
+select upper(first_name) from employees where employee_id in (100,101,102);
+  Assignment for UPPER Case Function
+1. Display First_name in UPPER case from employees table where employee_id are greater than 101.
+2. Display Hire_date in UPPER case from employees table where employee_id is 111.
+3. Display First_name ,Last_name  in UPPER Case from employees table where Department_id equal to 20.
+4. Display  Employee_id,First_name,Last_name in UPPER case from employees table where the first_name is Sarah
+SELECT INITCAP('hello') FROM DUAL;
+SELECT INITCAP('welcome TO OrCale tuTOrials') INICAP FROM DUAL;
+SELECT INITCAP(last_name) FROM hr.employees where employee_id=101;
+select initcap(first_name) from employees where employee_id in (100,101,102);
+ Assignment for INTICAP Function
+1. Display First_name in INTICAP from employees table where employee_id are greater than 101.
+2. Display Hire_date in INTICAP from employees table where employee_id is 111.
+3. Display First_name ,Last_name  in INTICAP from employees table where Department_id equal to 20.
+4. Display  Employee_id,First_name,Last_name in INTICAP from employees table where the first_name is Sarah
+Note: This function does not support CLOB data directly. However, CLOB can be passed in as arguments through implicit data type conversion.
+https://www.youtube.com/watch?v=NcVXrbLY8ng&list=PLiLpmqwkwkCt0QeXD8j7BwIoOaBGBRrZC&index=32
+SELECT first_name, ltrim(first_name,'*') FROM hr.employees where employee_id=100;
+--assume that our database has first_name as ***Steven
+SELECT SYSDATE FROM DUAL;
+select sysdate+30 from dual;
+SELECT SYSDATE+10 FROM DUAL;
+
+SELECT SYSDATE-10 FROM DUAL;
+TO_CHAR(NumericValue/DateValue/ColumName)
+--to change string format
+select to_char(salary),salary from hr.employees where employee_id=100;
+select * from hr.employees where to_char(hire_date,'yyyy')=2005
+select * from hr.employees where to_char(hire_date,'yyyy') IN(2001,2003,2005);
+SELECT * FROM hr.EMPLOYEES WHERE TO_CHAR(HIRE_DATE,'MMYYYY')='092006';
+SELECT * FROM HR.EMPLOYEES WHERE TO_CHAR(HIRE_DATE,'DAY')='TUESDAY';
+SELECT TO_CHAR(HIRE_DATE,’DAY’) FROM HR.EMPLOYEES;
+SELECT FIRST_NAME||’ ‘||’JOINED ON’||’ ‘||TO_CHAR(HIRE_DATE,’DAY’) FROM HR.EMPLOYEES;
+SELECT * FROM hr.employees WHERE TO_CHAR(HIRE_DATE,'FMDAY')='FRIDAY';
+SELECT * FROM HR.EMPLOYEES WHERE TO_CHAR(HIRE_DATE,'YYYY')='2005' AND TO_CHAR(HIREDATE,'Q')=2;
+SELECT TO_CHAR(SYSDATE, ‘MM-DD-YYYY HH:MI:SS’) “NOW” FROM DUAL;
+SELECT TO_CHAR(SYSDATE,'WW W') FROM DUAL;
+select to_char(sysdate,'MM-DD-YEAR') from dual;
+select to_char(sysdate,'Month-DD-YY') from dual;
+select to_char(sysdate,'DD-Month-YY') from dual;
+select to_char(sysdate,'MM-DD-YY HH:MI:SS') from dual;
+select to_char(sysdate,'MM-DD-YY MI') from dual;
+SELECT  TO_CHAR(sysdate,'FMDAY') from dual;
+
+  Assignment For To_char :
+1) display the salary column in character format from employee table where employee_id is greater then 100
+2) display the date column in character format from employee table where salary  in between 10000 and 18000
+3) Display the first three digit of salary from employee table , hint : use substr , to_char function
+4) find the first occurrence of first zero and start searching from first position  from employee table , hint : use INSTR , to_char function
+5) Replace Jan month with DEC in hire_date column  from employee table , hint : use to_char , replace function
+6) tell me the output of below query
+select replace(to_char(hire_date , 'DD-MM-YYYY') , '2004' , 'year') from employee 
+https://youtu.be/DEb70tvUltA?list=PLiLpmqwkwkCt0QeXD8j7BwIoOaBGBRrZC
+https://youtu.be/L0D0qByd2AE
+SELECT TO_DATE('08/AUGUST/2020') FROM DUAL;
+SELECT TO_DATE('08-AUGUST-2020')+10 FROM DUAL;
+TO_DATE(char value[,format_mask[,nls_lang]]);
+SELECT TO_DATE('08-AUGUST-2020','DD-MM-YYYY') FROM DUAL;
+SELECT TO_DATE('2018/10/14','YYYY/MM/DD') FROM DUAL;
+SELECT TO_DATE('20181012','YYYYMMDD') FROM DUAL;
+SELECT TO_DATE('08-10-2018','DD-MM-YYYY') FROM DUAL;
+SELECT TO_DATE('08-10-2018','DD-MM-YYYY','NLS_DATE_Language=American') FROM DUAL;
+SELECT TO_DATE('08-10-2018','DD-MM-YYYY','NLS_DATE_Language=Russian') FROM DUAL;
+SELECT TO_DATE('08-10-2018','DD-MM-YYYY','NLS_DATE_Language=French') FROM DUAL;
+select to_date ('0l-JAN-2023')from dual;
+select to_date ('0l-JAN-2023')from dual;
+select to_date ('0l-01-2023')from dual;
+select to_date('27/01/2023','dd/mm/yyyy') from dual;
+
+select add_months(sysdate,3) from dual;
+select add_months(sysdate,6) from dual;
+select add_months(sysdate,18) from dual;
+SELECT ADD_MONTHS(SYSDATE,-2) FROM DUAL;
+select add_months(sysdate,2) from dual;
+select last_day(sysdate) from dual;
+select add_months(sysdate,2) from dual;
+select add_months(sysdate,-2) from dual;
+SELECT SYSDATE, LAST_DAY(SYSDATE) "Last", LAST_DAY(SYSDATE) - SYSDATE "Days Left" FROM DUAL;
+select next_day(sysdate,'Monday') from dual;
+CREATE TABLE EMP
+       (EMPNO NUMBER(4) NOT NULL,
+        ENAME VARCHAR2(10),
+        JOB VARCHAR2(9),
+        MGR NUMBER(4),
+        HIREDATE DATE,
+        SAL NUMBER(7, 2),
+        COMM NUMBER(7, 2),
+        DEPTNO NUMBER(2));
+
+INSERT INTO EMP VALUES
+        (7369, 'SMITH',  'CLERK',     7902,
+        TO_DATE('17-DEC-1980', 'DD-MON-YYYY'),  800, NULL, 20);
+INSERT INTO EMP VALUES
+        (7499, 'ALLEN',  'SALESMAN',  7698,
+        TO_DATE('20-FEB-1981', 'DD-MON-YYYY'), 1600,  300, 30);
+INSERT INTO EMP VALUES
+        (7521, 'WARD',   'SALESMAN',  7698,
+        TO_DATE('22-FEB-1981', 'DD-MON-YYYY'), 1250,  500, 30);
+INSERT INTO EMP VALUES
+        (7566, 'JONES',  'MANAGER',   7839,
+        TO_DATE('2-APR-1981', 'DD-MON-YYYY'),  2975, NULL, 20);
+INSERT INTO EMP VALUES
+        (7654, 'MARTIN', 'SALESMAN',  7698,
+        TO_DATE('28-SEP-1981', 'DD-MON-YYYY'), 1250, 1400, 30);
+INSERT INTO EMP VALUES
+        (7698, 'BLAKE',  'MANAGER',   7839,
+        TO_DATE('1-MAY-1981', 'DD-MON-YYYY'),  2850, NULL, 30);
+INSERT INTO EMP VALUES
+        (7782, 'CLARK',  'MANAGER',   7839,
+        TO_DATE('9-JUN-1981', 'DD-MON-YYYY'),  2450, NULL, 10);
+INSERT INTO EMP VALUES
+        (7788, 'SCOTT',  'ANALYST',   7566,
+        TO_DATE('09-DEC-1982', 'DD-MON-YYYY'), 3000, NULL, 20);
+INSERT INTO EMP VALUES
+        (7839, 'KING',   'PRESIDENT', NULL,
+        TO_DATE('17-NOV-1981', 'DD-MON-YYYY'), 5000, NULL, 10);
+INSERT INTO EMP VALUES
+        (7844, 'TURNER', 'SALESMAN',  7698,
+        TO_DATE('8-SEP-1981', 'DD-MON-YYYY'),  1500,    0, 30);
+INSERT INTO EMP VALUES
+        (7876, 'ADAMS',  'CLERK',     7788,
+        TO_DATE('12-JAN-1983', 'DD-MON-YYYY'), 1100, NULL, 20);
+INSERT INTO EMP VALUES
+        (7900, 'JAMES',  'CLERK',     7698,
+        TO_DATE('3-DEC-1981', 'DD-MON-YYYY'),   950, NULL, 30);
+INSERT INTO EMP VALUES
+        (7902, 'FORD',   'ANALYST',   7566,
+        TO_DATE('3-DEC-1981', 'DD-MON-YYYY'),  3000, NULL, 20);
+INSERT INTO EMP VALUES
+        (7934, 'MILLER', 'CLERK',     7782,
+        TO_DATE('23-JAN-1982', 'DD-MON-YYYY'), 1300, NULL, 10);
+select sysdate from dual;
+select last_day(sysdate) from dual;
+select last_day(sysdate)+1 from dual;
+select last_day(sysdate)-3 from dual;
+--The following query determines how many days are left in the current month.
+SELECT SYSDATE, LAST_DAY(SYSDATE) "Last", LAST_DAY(SYSDATE) - SYSDATE "Days Left" FROM DUAL;
+select next_day(sysdate,'Mon') from dual;
+select next_day(sysdate,'Friday') from dual;
+select months_between('4-Jan-2024','08-Dec-2022') from dual;
+SELECT MONTHS_BETWEEN('05-JAN-80','05-JAN-81') FROM DUAL;
+SELECT CURRENT_DATE, SESSIONTIMEZONE FROM DUAL;
+select * from book;
+select sum(price) from book;
+SELECT SUM(price) As TotalPrice FROM book;
+select type,sum(price) AS TotalPrice from book group by type;
+select sum(price) AS TotalPrice from book where type='cooking';
+select sum(title) AS CountOfTitles from book; 
+/*ORA-01722: invalid number
+01722. 00000 -  "invalid number"
+*Cause:    The specified number was invalid.
+*Action:   Specify a valid number.*/
+
+drop sequence emp_table_seq;
+drop sequence dept_table_seq;
+create sequence emp_table_seq start with 1000;
+create sequence dept_table_Seq start with 41;
+
+DROP TABLE EMP;
+DROP TABLE DEPT;
+
+
+CREATE TABLE DEPT (
+ DEPTNO NUMBER(2),
+ DNAME VARCHAR2(14),
+ LOC VARCHAR2(13),
+ CONSTRAINT DEPT_PK PRIMARY KEY (DEPTNO))
+ ROWDEPENDENCIES
+ ;
+
+INSERT INTO DEPT VALUES (10, 'ACCOUNTING', 'NEW YORK');
+INSERT INTO DEPT VALUES (20, 'RESEARCH',   'DALLAS');
+INSERT INTO DEPT VALUES (30, 'SALES',      'CHICAGO');
+INSERT INTO DEPT VALUES (40, 'OPERATIONS', 'BOSTON');
+
+CREATE TABLE EMP (
+ EMPNO NUMBER(4) NOT NULL,
+ ENAME VARCHAR2(10),
+ JOB VARCHAR2(9),
+ MGR NUMBER(4),
+ HIREDATE DATE,
+ SAL NUMBER(7, 2),
+ COMM NUMBER(7, 2),
+ DEPTNO NUMBER(2), 
+ CONSTRAINT EMPLOYEE_PK PRIMARY KEY (EMPNO),
+ CONSTRAINT WORKS_IN_DEPT FOREIGN KEY (DEPTNO) REFERENCES DEPT ON DELETE SET NULL)
+ ROWDEPENDENCIES 
+ ;
+
+INSERT INTO EMP VALUES
+        (7369, 'SMITH',  'CLERK',     7902,
+        TO_DATE('17-DEC-1980', 'DD-MON-YYYY'),  800, NULL, 20);
+INSERT INTO EMP VALUES
+        (7499, 'ALLEN',  'SALESMAN',  7698,
+        TO_DATE('20-FEB-1981', 'DD-MON-YYYY'), 1600,  300, 30);
+INSERT INTO EMP VALUES
+        (7521, 'WARD',   'SALESMAN',  7698,
+        TO_DATE('22-FEB-1981', 'DD-MON-YYYY'), 1250,  500, 30);
+INSERT INTO EMP VALUES
+        (7566, 'JONES',  'MANAGER',   7839,
+        TO_DATE('2-APR-1981', 'DD-MON-YYYY'),  2975, NULL, 20);
+INSERT INTO EMP VALUES
+        (7654, 'MARTIN', 'SALESMAN',  7698,
+        TO_DATE('28-SEP-1981', 'DD-MON-YYYY'), 1250, 1400, 30);
+INSERT INTO EMP VALUES
+        (7698, 'BLAKE',  'MANAGER',   7839,
+        TO_DATE('1-MAY-1981', 'DD-MON-YYYY'),  2850, NULL, 30);
+INSERT INTO EMP VALUES
+        (7782, 'CLARK',  'MANAGER',   7839,
+        TO_DATE('9-JUN-1981', 'DD-MON-YYYY'),  2450, NULL, 10);
+INSERT INTO EMP VALUES
+        (7788, 'SCOTT',  'ANALYST',   7566,
+        TO_DATE('09-DEC-1982', 'DD-MON-YYYY'), 3000, NULL, 20);
+INSERT INTO EMP VALUES
+        (7839, 'KING',   'PRESIDENT', NULL,
+        TO_DATE('17-NOV-1981', 'DD-MON-YYYY'), 5000, NULL, 10);
+INSERT INTO EMP VALUES
+        (7844, 'TURNER', 'SALESMAN',  7698,
+        TO_DATE('8-SEP-1981', 'DD-MON-YYYY'),  1500,    0, 30);
+INSERT INTO EMP VALUES
+        (7876, 'ADAMS',  'CLERK',     7788,
+        TO_DATE('12-JAN-1983', 'DD-MON-YYYY'), 1100, NULL, 20);
+INSERT INTO EMP VALUES
+        (7900, 'JAMES',  'CLERK',     7698,
+        TO_DATE('3-DEC-1981', 'DD-MON-YYYY'),   950, NULL, 30);
+INSERT INTO EMP VALUES
+        (7902, 'FORD',   'ANALYST',   7566,
+        TO_DATE('3-DEC-1981', 'DD-MON-YYYY'),  3000, NULL, 20);
+INSERT INTO EMP VALUES
+        (7934, 'MILLER', 'CLERK',     7782,
+        TO_DATE('23-JAN-1982', 'DD-MON-YYYY'), 1300, NULL, 10);
+COMMIT;
+
+REM ALTER TABLE EMP ADD (
+REM        CONSTRAINT MANAGED_BY FOREIGN KEY (MGR) 
+REM                  REFERENCES EMP);
+
+CREATE INDEX DEPTNO_ON_EMP ON EMP(DEPTNO);
+
+create or replace trigger dept_table_befins
+before insert on dept for each row
+begin
+  if (:new.deptno is null or :new.deptno < 0) then
+    select dept_table_seq.nextval into :new.deptno from dual;
+  end if;
+end;
+.
+/
+create or replace trigger emp_table_befins
+before insert on emp for each row
+begin
+  if (:new.empno is null or :new.empno < 0) then
+    select emp_Table_seq.nextval into :new.empno from dual;
+  end if;
+end;
+.
+/
+
+
+
+PURGE RECYCLEBIN
+/
+DROP Table Employee_Dotnet;
+
+CREATE TABLE Employee_Dotnet (
+  Id INT PRIMARY KEY,
+  Name VARCHAR(15),
+  Department VARCHAR(10),
+  Salary NUMBER(8, 2),
+  Gender VARCHAR(10),
+  Age INT,
+  City VARCHAR(10)
+);
+
+INSERT INTO Employee_Dotnet (Id, Name, Department, Salary, Gender, Age, City) VALUES (1001, 'John', 'IT', 35000, 'Male', 25, 'London');
+INSERT INTO Employee_Dotnet (Id, Name, Department, Salary, Gender, Age, City) VALUES (1002, 'Smith', 'HR', 45000, 'Female', 27, 'Mumbai');
+INSERT INTO Employee_Dotnet (Id, Name, Department, Salary, Gender, Age, City) VALUES (1003, 'James', 'Finance', 50000, 'Male', 28, 'Delhi');
+INSERT INTO Employee_Dotnet (Id, Name, Department, Salary, Gender, Age, City) VALUES (1004, 'Mike', 'Finance', 50000, 'Male', 28, 'London');
+INSERT INTO Employee_Dotnet (Id, Name, Department, Salary, Gender, Age, City) VALUES (1005, 'Linda', 'HR', 75000, 'Female', 26, 'Mumbai');
+INSERT INTO Employee_Dotnet (Id, Name, Department, Salary, Gender, Age, City) VALUES (1006, 'Anurag', 'IT', 35000, 'Male', 25, 'London');
+INSERT INTO Employee_Dotnet (Id, Name, Department, Salary, Gender, Age, City) VALUES (1007, 'Priyanla', 'HR', 45000, 'Female', 27, 'Mumbai');
+INSERT INTO Employee_Dotnet (Id, Name, Department, Salary, Gender, Age, City) VALUES (1008, 'Sambit', 'IT', 50000, 'Male', 28, 'London');
+INSERT INTO Employee_Dotnet (Id, Name, Department, Salary, Gender, Age, City) VALUES (1009, 'Pranaya', 'IT', 50000, 'Male', 28, 'London');
+INSERT INTO Employee_Dotnet (Id, Name, Department, Salary, Gender, Age, City) VALUES (1010, 'Hina', 'HR', 75000, 'Female', 26, 'Mumbai');
+
+select sum(salary) AS Total_Salary from Employee_Dotnet;
+select department,sum(salary) AS Total_Salary from Employee_Dotnet group by department;
+select sum(salary) AS Total_Salary from Employee_Dotnet where Gender='Male';
+select min(age) AS Min_Age from Employee_Dotnet;
+select department,min(salary) AS Min_Salary from Employee_Dotnet group by department;
+select min(salary) AS Min_Salary from Employee_Dotnet where Gender='Male';
+select min(name) AS Min_Name from Employee_Dotnet;
+select * from Employee_Dotnet;
+select Max(salary) AS Max_Salary from Employee_Dotnet;
+select department,Max(salary) AS Max_Salary from Employee_Dotnet group by department;
+select Max(salary) AS Max_Salary from Employee_Dotnet where Gender='Male';
+select Max(Name) AS Max_Name from Employee_Dotnet;
+select AVG(salary) AS AVG_Salary from Employee_Dotnet;
+SELECT Department, AVG(Salary) AS AVG_Salary
+FROM Employee
+GROUP BY Department;
+
+SELECT AVG(Salary) AS AVG_Salary
+FROM Employee
+WHERE Gender = 'Female';
+
+SELECT AVG(Name) As AVG_Name FROM Employee;
+
+/*ORA-00942: table or view does not exist
+00942. 00000 -  "table or view does not exist"
+*Cause:    
+*Action:
+Error at Line: 625 Column: 35*/
+
+create table employee_unique (ID int unique,Name varchar(10),Email varchar(25),Department varchar(10));
+Insert into employee_unique (ID, Name,Email,Department) values (1, 'Anurag','Anurag@g.com','IT'); 
+INSERT INTO employee_unique (Id, Name, Email, Department) VALUES (1, 'Sambit', 'Sambit@g.com', 'IT');
+INSERT INTO Employee_unique (Id, Name, Email, Department) VALUES (2, 'Sambit', 'Anurag@g.com', 'IT');
+INSERT INTO Employee_unique (Id, Name, Email, Department) VALUES (NULL, 'Sambit', NULL, 'IT');
+create table test1(ID int unique, Name varchar2(10) unique);
+insert into test1(ID,Name) values (1,'A');
+insert into test1(ID,Name) values (1,'A');
+insert into test1(ID,Name) values (null,null);
+/Imposing UNIQUE Constraint at Table Level:/
+create table test2(ID int, Name varchar(50), Email varchar(10), unique(Name),unique(Email));
+INSERT INTO TEST2 VALUES(1,’A’, ‘A@G.COM’); —Allowed
+INSERT INTO TEST2 VALUES(2,’A’, ‘B@G.COM’); —Not Allowed
+INSERT INTO TEST2 VALUES(3,’C’, ‘A@G.COM’); —NOT Allowed
+CREATE TABLE Customer_dotnet
+( 
+    Id    INT NOT NULL, 
+    Name  VARCHAR(30), 
+    Email VARCHAR(50),
+    UNIQUE (Name, Email)
+);
+INSERT INTO Customer_dotnet (Id, Name, Email) VALUES (1, 'Sambit', 'S@G.COM');
+INSERT INTO Customer_dotnet (Id, Name, Email) VALUES (2, 'Sambit', 'S1@G.COM');
+INSERT INTO Customer_dotnet (Id, Name, Email) VALUES (3, 'Sambit1', 'S1@G.COM');
+
+select * from customer_dotnet;
+
+INSERT INTO Customer_dotnet (Id, Name, Email) VALUES (4, 'Sambit', 'S@G.COM');
+/*Error report -
+ORA-00001: unique constraint (RAUF.SYS_C008660) violated*/
+
+create table test3( STID INT NOT NULL,SNAME VARCHAR2(10) NOT NULL);
+insert into test3  VALUES (101,'A'); --Allow
+insert into test3  VALUES (101,'A'); --Allow
+INSERT INTO TEST3 VALUES(NULL, NULL); —-Not Allow
+
+CREATE TABLE Student (
+  StudentId INT NOT NULL,
+  Name VARCHAR2(20) NOT NULL,
+  RegdNo VARCHAR2(10) NOT NULL,
+  Branch VARCHAR2(10) NOT NULL,
+  Mobile VARCHAR2(10)
+);
+INSERT INTO Student VALUES (1, 'Anurag', 'abc1001', 'CSE', '1111111111');
+INSERT INTO Student VALUES (2, 'Sambit', 'abc1002', 'CSE', NULL);
+INSERT INTO Student VALUES (1, 'Anurag', 'abc1001', 'CSE', '1111111111');
+
+select * from Student;
+INSERT INTO Student VALUES (4, NULL, 'abc1002', 'CSE', '2222222222');
+
+CREATE TABLE Employees_check_constraint(
+   EmployeeID INT CHECK(EmployeeID BETWEEN 100 AND 1000),
+   NAME VARCHAR(20),
+   AGE  INT NOT NULL CHECK (AGE >= 18),
+   DeptID INT CHECK(DeptID > 0 AND DeptID < 100),
+   SALARY NUMBER(10)
+);
+
+INSERT INTO Employees_check_constraint values (100, 'Anurag', 20, 1, 20000);
+INSERT INTO Employees_check_constraint values (101, 'Mohanty', 25, 2, 25000);
+INSERT INTO Employees_check_constraint values (10, 'Sambit', 20, 1, 20000);
+INSERT INTO Employees_check_constraint values (102, 'Sambit', 10, 1, 20000);
+INSERT INTO Employees values (102, 'Sambit', 20, 105, 20000);
+
+CREATE TABLE Persons(
+   PersonID INT,
+   NAME VARCHAR(20),
+   AGE  INT,
+   DeptID INT,
+   SALARY NUMBER(10),
+   CONSTRAINT CONSTRAINT_PersonID CHECK(PersonID BETWEEN 100 AND 1000),
+   CONSTRAINT CONSTRAINT_AGE CHECK(AGE >= 18),
+   CONSTRAINT CONSTRAINT_DeptID CHECK(DeptID > 0 AND DeptID < 100)
+);
+
+INSERT INTO Persons VALUES (101, 'Anurag', 20, 10, 1000); --Allowed
+INSERT INTO Persons VALUES (10, 'Anurag', 20, 10, 1000); -- Now Allowed (Check Constraints for PersonID violates)
+INSERT INTO Persons VALUES (102, 'Anurag', 15, 10, 1000); -- Now Allowed (Check Constraints for AGE violates)
+INSERT INTO Persons VALUES (102, 'Anurag', 20, 105, 1000); -- Now Allowed (Check Constraints for DeptID violates)
+
+CREATE TABLE Person(
+   PersonID INT,
+   NAME VARCHAR(20),
+   AGE  INT,
+   DeptID INT,
+   SALARY NUMBER(10),
+   CONSTRAINT CONSTRAINT_AGE_DepTID CHECK(AGE >= 18 AND DepTID > 0)
+);
+
+INSERT INTO Person VALUES (1, 'Anurag', 20, 10, 1000); --Allowed
+INSERT INTO Person VALUES (2, 'Anurag', 15, 20, 1000); -- NOT Allowed
+INSERT INTO Person VALUES (3, 'Anurag', 22, 0, 1000); --NOT Allowed
+INSERT INTO Person VALUES (1, 'Anurag', 15, 0, 1000); --Not Allowed
+
+CREATE TABLE Employee_Primary_Key 
+( 
+    Id   INT PRIMARY KEY, 
+    Name  VARCHAR2(20), 
+    Email  VARCHAR2(20) PRIMARY KEY,
+    Department  VARCHAR2(10)
+);
+
+Error report -
+ORA-02260: table can have only one primary key
+02260. 00000 -  "table can have only one primary key"
+*Cause:    Self-evident.
+*Action:   Remove the extra primary key.
+
+CREATE TABLE Employee_Primary_Key 
+( 
+    Id   INT PRIMARY KEY, 
+    Name  VARCHAR2(20), 
+    Email  VARCHAR2(20),
+    Department  VARCHAR2(10)
+);
+
+
+INSERT INTO Employee_Primary_Key (Id, Name, Email, Department) VALUES (1, 'Sambit', 'Sambit@g.com', 'IT');
+INSERT INTO Employee_Primary_Key (Id, Name, Email, Department) VALUES (1, 'Anurag', 'Anurag@g.com', 'IT');
+select * from Employee_Primary_Key;
+INSERT INTO Employee_Primary_Key (Id, Name, Email, Department) VALUES (NULL, 'Anurag', 'Anurag@g.com', 'IT');
+
+CREATE TABLE Student_Primary_Key
+( 
+    Id      INT, 
+    Name    VARCHAR2(20), 
+    Email   VARCHAR2(20),
+    PRIMARY KEY(Id)
+);
+
+CREATE TABLE StudentDetails_Primary_Keyc
+( 
+    Id      INT, 
+    NAME    VARCHAR2(20), 
+    Email   VARCHAR2(30),
+    CONSTRAINT Student_Id_Primary PRIMARY KEY (Id)
+);
+
+CREATE TABLE EmployeeDetails_Composite_PK
+( 
+    Id  INT, 
+    Name VARCHAR2(20), 
+    Email  VARCHAR2(20), 
+    PRIMARY KEY(Name, Email) 
+);
+
+INSERT INTO EmployeeDetails_Composite_PK (Id, Name, Email) VALUES (1, 'Sambit', 'Sambit@g.com');
+INSERT INTO EmployeeDetails_Composite_PK (Id, Name, Email) VALUES (2, 'Sambit', 'Sambit1@g.com');
+INSERT INTO EmployeeDetails_Composite_PK (Id, Name, Email) VALUES (3, 'Sambit1', 'Sambit1@g.com');
+select * from EmployeeDetails_Composite_PK;
+INSERT INTO EmployeeDetails_Composite_PK (Id, Name, Email) VALUES (4, 'Sambit', 'Sambit@g.com');
+
+CREATE TABLE Test_add_PK_existing_table
+( 
+    Id      INT, 
+    NAME    VARCHAR2(20), 
+    Email VARCHAR2(20)
+);
+ALTER TABLE TEST_ADD_PK_EXISTING_TABLE ADD PRIMARY KEY (Id);
+ALTER TABLE TEST_ADD_PK_EXISTING_TABLE DROP PRIMARY KEY;
+CREATE TABLE Department_PK
+( 
+    Id   INT PRIMARY KEY, 
+    Name VARCHAR2(20), 
+    Location  VARCHAR2(20) 
+);
+INSERT INTO Department_PK (Id, Name, Location) VALUES (10, 'IT', 'Hyderabad');
+INSERT INTO Department_PK (Id, Name, Location) VALUES (20, 'HR', 'Delhi');
+INSERT INTO Department_PK (Id, Name, Location) VALUES (30, 'Finance', 'Mumbai');
+select * from Department_PK;
+
+CREATE TABLE Employee_FK 
+( 
+    ID    INT PRIMARY KEY, 
+    Name  VARCHAR2(20), 
+    Salary INT, 
+    DepartmentId INT REFERENCES Department_PK(Id) 
+);
+
+INSERT into Employee_FK VALUES (101, 'Anurag', 25000, 10); 
+INSERT into Employee_FK VALUES (102, 'Pranaya', 32000, 20); 
+INSERT into Employee_FK VALUES (103, 'Hina', 35000, 30);
+INSERT into Employee_FK VALUES (104, 'Sambit', 52000, 40);
