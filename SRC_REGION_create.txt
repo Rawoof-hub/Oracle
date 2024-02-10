@@ -1,0 +1,65 @@
+CREATE TABLE SRC_REGION
+(
+  REGION_ID    NUMBER(5),
+  REGION_NAME  VARCHAR2(30),
+  COUNTRY_ID   NUMBER(5)
+);
+
+
+Insert into SRC_REGION
+   (REGION_ID, REGION_NAME, COUNTRY_ID)
+ Values
+   (1, 'West Coast', 1);
+Insert into SRC_REGION
+   (REGION_ID, REGION_NAME, COUNTRY_ID)
+ Values
+   (2, 'Northern States', 1);
+Insert into SRC_REGION
+   (REGION_ID, REGION_NAME, COUNTRY_ID)
+ Values
+   (3, 'East Coast', 1);
+Insert into SRC_REGION
+   (REGION_ID, REGION_NAME, COUNTRY_ID)
+ Values
+   (4, 'Southern States', 1);
+Insert into SRC_REGION
+   (REGION_ID, REGION_NAME, COUNTRY_ID)
+ Values
+   (5, 'England', 44);
+Insert into SRC_REGION
+   (REGION_ID, REGION_NAME, COUNTRY_ID)
+ Values
+   (6, 'Scotland', 44);
+Insert into SRC_REGION
+   (REGION_ID, REGION_NAME, COUNTRY_ID)
+ Values
+   (7, 'Northern Ireland', 44);
+Insert into SRC_REGION
+   (REGION_ID, REGION_NAME, COUNTRY_ID)
+ Values
+   (8, 'Wales', 44);
+Insert into SRC_REGION
+   (REGION_ID, REGION_NAME, COUNTRY_ID)
+ Values
+   (9, 'East', 81);
+Insert into SRC_REGION
+   (REGION_ID, REGION_NAME, COUNTRY_ID)
+ Values
+   (10, 'West', 81);
+Insert into SRC_REGION
+   (REGION_ID, REGION_NAME, COUNTRY_ID)
+ Values
+   (11, 'North', 33);
+Insert into SRC_REGION
+   (REGION_ID, REGION_NAME, COUNTRY_ID)
+ Values
+   (12, 'South', 33);
+Insert into SRC_REGION
+   (REGION_ID, REGION_NAME, COUNTRY_ID)
+ Values
+   (13, 'West', 37);
+Insert into SRC_REGION
+   (REGION_ID, REGION_NAME, COUNTRY_ID)
+ Values
+   (14, 'West', 37);
+COMMIT;

@@ -1,0 +1,25 @@
+
+CREATE TABLE SRC_REBATE
+(
+  REBATE_ID      NUMBER,
+  REBATE_AMOUNT  NUMBER(9,2)
+);
+
+
+Insert into SRC_REBATE
+   (REBATE_ID, REBATE_AMOUNT)
+ Values
+   (100, 15);
+Insert into SRC_REBATE
+   (REBATE_ID, REBATE_AMOUNT)
+ Values
+   (200, 18);
+Insert into SRC_REBATE
+   (REBATE_ID, REBATE_AMOUNT)
+ Values
+   (300, 20);
+Insert into SRC_REBATE
+   (REBATE_ID, REBATE_AMOUNT)
+ Values
+   (400, 23);
+COMMIT;

@@ -1,0 +1,50 @@
+CREATE TABLE SRC_COUNTRY
+(
+  COUNTRY_ID    NUMBER(5),
+  COUNTRY_NAME  VARCHAR2(15)
+);
+
+Insert into SRC_COUNTRY
+   (COUNTRY_ID, COUNTRY_NAME)
+ Values
+   (1, 'USA');
+Insert into SRC_COUNTRY
+   (COUNTRY_ID, COUNTRY_NAME)
+ Values
+   (33, 'France');
+Insert into SRC_COUNTRY
+   (COUNTRY_ID, COUNTRY_NAME)
+ Values
+   (34, 'Spain');
+Insert into SRC_COUNTRY
+   (COUNTRY_ID, COUNTRY_NAME)
+ Values
+   (37, 'Germany');
+Insert into SRC_COUNTRY
+   (COUNTRY_ID, COUNTRY_NAME)
+ Values
+   (39, 'Italy');
+Insert into SRC_COUNTRY
+   (COUNTRY_ID, COUNTRY_NAME)
+ Values
+   (41, 'Switzerland');
+Insert into SRC_COUNTRY
+   (COUNTRY_ID, COUNTRY_NAME)
+ Values
+   (44, 'United Kingdom');
+Insert into SRC_COUNTRY
+   (COUNTRY_ID, COUNTRY_NAME)
+ Values
+   (48, 'Sweden');
+Insert into SRC_COUNTRY
+   (COUNTRY_ID, COUNTRY_NAME)
+ Values
+   (81, 'Japan');
+Insert into SRC_COUNTRY
+   (COUNTRY_ID, COUNTRY_NAME)
+ Values
+   (353, 'Ireland');
+
+COMMIT;
+
+

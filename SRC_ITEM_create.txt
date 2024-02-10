@@ -1,0 +1,134 @@
+CREATE TABLE SRC_ITEM
+(
+  ITEM_ID    NUMBER(38) NOT NULL,
+  ITEM_NAME  VARCHAR2(72),
+  ITEM_DESC  VARCHAR2(72),
+  PRICE      NUMBER(10,2)
+);
+
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (1313, 'Regulator System', 'Air Regulators', 250);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (1314, 'Second Stage Regulator', 'Air Regulators', 365);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (1330, 'Alternate Inflation Unit', 'Air Regulators', 260);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (1390, 'First Stage Regulator', 'Air Regulators', 170);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (1986, 'Depth/Pressure Gauge', 'Small Instruments', 188);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (2314, 'Electronic Console', 'Small Instruments', 390);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (2341, 'Depth/Pressure Gauge', 'Small Instruments', 105);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (2343, 'Personal Dive Sonar', 'Small Instruments', 235);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (2350, 'Compass Console Mount', 'Small Instruments', 29);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (2367, 'Compass (meter only)', 'Small Instruments', 52);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (2612, 'Direct Sighting Computer', 'Small Instruments', 34.95);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (2613, 'Dive Computer', 'Small Instruments', 179);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (2619, 'Navigation Compass', 'Small Instruments', 19.95);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (2630, 'Wrist Band Thermometer', 'Small Instruments', 18);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (3316, 'Stabilizing Vest', 'Buoyancy Compensation', 430);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (3326, 'Front Clip Stabilizing Vest', 'Buoyancy Compensation', 280);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (3340, 'Trim Fit Stabilizing Vest', 'Buoyancy Compensation', 395);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (3386, 'Welded Seam Stabilizer', 'Buoyancy Compensation', 280);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (5313, 'Safety Knife', 'Tools', 41);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (5318, 'Medium Titanium Knife', 'Tools', 56.95);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (5324, 'Chisel Point Knife', 'Tools', 41);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (5349, 'Flashlight', 'Tools', 65);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (5356, 'Medium Stainless Steel Knife', 'Tools', 70);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (5378, 'Divers Knife and Sheath', 'Tools', 70);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (7612, 'Krypton Flashlight', 'Tools', 44.95);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (7619, 'Flashlight (Recharge)', 'Tools', 169.95);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (7654, 'Halogen Flashlight', 'Tools', 59.95);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (9312, '60.6 cu ft Tank', 'Air Tank', 179);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (9316, '95.1 cu ft Tank', 'Air Tank', 325);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (9318, '71.4 cu ft Tank', 'Air Tank', 195);
+Insert into SRC_ITEM
+   (ITEM_ID, ITEM_NAME, ITEM_DESC, PRICE)
+ Values
+   (9354, '75.8 cu ft Tank', 'Air Tank', 235);
+COMMIT;
+

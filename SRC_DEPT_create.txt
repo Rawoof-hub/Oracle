@@ -1,0 +1,30 @@
+CREATE TABLE SRC_DEPT
+(
+  DEPTNO  NUMBER(2),
+  DNAME   VARCHAR2(14),
+  LOC     VARCHAR2(13)
+);
+
+
+ALTER TABLE SRC_DEPT ADD (
+  CONSTRAINT PK_DEPT
+ PRIMARY KEY
+ (DEPTNO));
+
+Insert into SRC_DEPT
+   (DEPTNO, DNAME, LOC)
+ Values
+   (10, 'ACCOUNTING', 'NEW YORK');
+Insert into SRC_DEPT
+   (DEPTNO, DNAME, LOC)
+ Values
+   (20, 'RESEARCH', 'DALLAS');
+Insert into SRC_DEPT
+   (DEPTNO, DNAME, LOC)
+ Values
+   (30, 'SALES', 'CHICAGO');
+Insert into SRC_DEPT
+   (DEPTNO, DNAME, LOC)
+ Values
+   (40, 'OPERATIONS', 'BOSTON');
+COMMIT;
