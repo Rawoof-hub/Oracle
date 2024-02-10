@@ -1,0 +1,137 @@
+
+CREATE TABLE SRC_MANU_ITEM
+(
+  ITEM_ID            NUMBER(5) NOT NULL PRIMARY KEY,
+  ITEM_NAME          VARCHAR2(72),
+  PRICE              NUMBER(10,2),
+  MANUFACTURER_ID    NUMBER(5),
+  MANUFACTURER_NAME  VARCHAR2(50)
+);
+
+
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (1313, 'Regulator System', 250, 100, 'JP');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (1314, 'Second Stage Regulator', 365, 100, 'JP');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (1330, 'Alternate Inflation Unit', 260, 100, 'JP');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (1390, 'First Stage Regulator', 170, 101, 'OBrien');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (1986, 'Depth/Pressure Gauge', 188, 101, 'OBrien');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (2314, 'Electronic Console', 390, 102, 'Mistral');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (2341, 'Depth/Pressure Gauge', 105, 102, 'Mistral');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (2343, 'Personal Dive Sonar', 235, 102, 'Mistral');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (2350, 'Compass Console Mount', 29, 103, 'Spinnaker');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (2367, 'Compass (meter only)', 52, 104, 'Head');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (2612, 'Direct Sighting Computer', 34.95, 105, 'Jesper');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (2613, 'Dive Computer', 179, 106, 'Acme');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (2619, 'Navigation Compass', 19.95, 107, 'Medallion');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (2630, 'Wrist Band Thermometer', 18, 108, 'Sportstar');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (3316, 'Stabilizing Vest', 430, 109, 'WindJammer');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (3326, 'Front Clip Stabilizing Vest', 280, 110, 'Monsoon');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (3340, 'Trim Fit Stabilizing Vest', 395, 109, 'WindJammer');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (3386, 'Welded Seam Stabilizer', 280, 108, 'Sportstar');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (5313, 'Safety Knife', 41, 107, 'Medallion');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (5318, 'Medium Titanium Knife', 56.95, 106, 'Acme');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (5324, 'Chisel Point Knife', 41, 105, 'Jesper');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (5349, 'Flashlight', 65, 104, 'Head');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (5356, 'Medium Stainless Steel Knife', 70, 103, 'Spinnaker');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (5378, 'Divers Knife and Sheath', 70, 102, 'Mistral');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (7612, 'Krypton Flashlight', 44.95, 101, 'OBrien');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (7619, 'Flashlight (Recharge)', 169.95, 100, 'Nike');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (7654, 'Halogen Flashlight', 59.95, 103, 'Spinnaker');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (9312, '60.6 cu ft Tank', 179, 104, 'Head');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (9316, '95.1 cu ft Tank', 325, 105, 'Jesper');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (9318, '71.4 cu ft Tank', 195, 106, 'Acme');
+Insert into SRC_MANU_ITEM
+   (ITEM_ID, ITEM_NAME, PRICE, MANUFACTURER_ID, MANUFACTURER_NAME)
+ Values
+   (9354, '75.8 cu ft Tank', 235, 107, 'Medallion');
+COMMIT;
+
